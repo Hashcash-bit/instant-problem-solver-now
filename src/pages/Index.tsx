@@ -1,10 +1,12 @@
-
 import React, { useState, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import WatchableCard from "@/components/WatchableCard";
 import { watchables, genres as allGenres, types as allTypes, Watchable } from "@/data/watchables";
 import { Shuffle, Film, Tv2, ListFilter } from 'lucide-react';
+
+const INTERNAL_ANY_GENRE_VALUE = "__internal_any_genre_placeholder__";
+const INTERNAL_ANY_TYPE_VALUE = "__internal_any_type_placeholder__";
 
 const Index = () => {
   const [selectedGenre, setSelectedGenre] = useState<string>('');
@@ -45,12 +47,26 @@ const Index = () => {
         const randomIndex = Math.floor(Math.random() * filteredWatchables.length);
         setRecommendation(filteredWatchables[randomIndex]);
       } else {
-        //  Handle no results - maybe show a toast or message
-        // For now, just sets recommendation to null which will clear any previous one
         console.log("No watchables found for the selected criteria.");
       }
       setIsLoading(false);
     }, 700); // Simulate loading
+  };
+
+  const handleGenreChange = (value: string) => {
+    if (value === INTERNAL_ANY_GENRE_VALUE) {
+      setSelectedGenre("");
+    } else {
+      setSelectedGenre(value);
+    }
+  };
+
+  const handleTypeChange = (value: string) => {
+    if (value === INTERNAL_ANY_TYPE_VALUE) {
+      setSelectedType("");
+    } else {
+      setSelectedType(value);
+    }
   };
 
   return (
@@ -68,7 +84,7 @@ const Index = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full p-6 bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700">
           <div>
             <label htmlFor="genre-select" className="block text-sm font-medium text-gray-300 mb-1 ml-1">Genre</label>
-            <Select value={selectedGenre} onValueChange={setSelectedGenre}>
+            <Select value={selectedGenre} onValueChange={handleGenreChange}>
               <SelectTrigger id="genre-select" className="w-full bg-slate-700 border-slate-600 text-gray-200 focus:ring-teal-500">
                 <ListFilter className="h-4 w-4 mr-2 opacity-70" />
                 <SelectValue placeholder="Any Genre" />
@@ -76,7 +92,7 @@ const Index = () => {
               <SelectContent className="bg-slate-800 border-slate-700 text-gray-200">
                 <SelectGroup>
                   <SelectLabel className="text-gray-400">Select Genre</SelectLabel>
-                  <SelectItem value="" className="hover:bg-slate-700">Any Genre</SelectItem>
+                  <SelectItem value={INTERNAL_ANY_GENRE_VALUE} className="hover:bg-slate-700">Any Genre</SelectItem>
                   {availableGenres.map(genre => (
                     <SelectItem key={genre} value={genre} className="hover:bg-slate-700">{genre}</SelectItem>
                   ))}
@@ -87,7 +103,7 @@ const Index = () => {
           
           <div>
             <label htmlFor="type-select" className="block text-sm font-medium text-gray-300 mb-1 ml-1">Type</label>
-            <Select value={selectedType} onValueChange={setSelectedType}>
+            <Select value={selectedType} onValueChange={handleTypeChange}>
               <SelectTrigger id="type-select" className="w-full bg-slate-700 border-slate-600 text-gray-200 focus:ring-teal-500">
                 {selectedType === "Movie" ? <Film className="h-4 w-4 mr-2 opacity-70" /> : selectedType === "TV Show" ? <Tv2 className="h-4 w-4 mr-2 opacity-70" /> : <ListFilter className="h-4 w-4 mr-2 opacity-70" />}
                 <SelectValue placeholder="Any Type" />
@@ -95,7 +111,7 @@ const Index = () => {
               <SelectContent className="bg-slate-800 border-slate-700 text-gray-200">
                 <SelectGroup>
                   <SelectLabel className="text-gray-400">Select Type</SelectLabel>
-                  <SelectItem value="" className="hover:bg-slate-700">Any Type</SelectItem>
+                  <SelectItem value={INTERNAL_ANY_TYPE_VALUE} className="hover:bg-slate-700">Any Type</SelectItem>
                   {availableTypes.map(type => (
                     <SelectItem key={type} value={type} className="hover:bg-slate-700">{type}</SelectItem>
                   ))}
