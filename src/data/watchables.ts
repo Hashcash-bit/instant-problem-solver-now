@@ -1,3 +1,4 @@
+
 export interface Watchable {
   id: number;
   name: string; // Was 'title'
@@ -12,9 +13,9 @@ export interface Watchable {
   rating?: {
     average?: number | null;
   };
+  url?: string; // Added URL property from TVMaze API
   // Add any other fields you might need from TVMaze API
   // For example:
-  // url?: string;
   // language?: string;
   // status?: string;
 }
