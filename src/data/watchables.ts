@@ -82,10 +82,83 @@ export const watchables: Watchable[] = [
     year: 2021,
     imageKey: "photo-1605810230434-7631ac76ec81", // people around screens
   },
+  {
+    id: 9,
+    title: "Galaxy Drifters",
+    type: "TV Show",
+    genre: "Sci-Fi",
+    description: "A ragtag crew of smugglers and explorers traverse unknown galaxies, encountering strange new worlds and civilizations.",
+    year: 2023,
+    imageKey: "photo-1470813740244-df37b8c1edcb", // blue starry night
+  },
+  {
+    id: 10,
+    title: "The Enigma of Pine Creek",
+    type: "Movie",
+    genre: "Mystery",
+    description: "A journalist investigates a series of bizarre disappearances in a remote, eerie town with a hidden past.",
+    year: 2024,
+    imageKey: "photo-1500673922987-e212871fec22", // yellow lights between trees
+  },
+  {
+    id: 11,
+    title: "Neon Knights",
+    type: "Movie",
+    genre: "Action",
+    description: "In a dystopian future, two renegade warriors fight for freedom against an oppressive regime.",
+    year: 2025,
+    imageKey: "photo-1526374965328-7f61d4dc18c5", // Matrix movie still
+  },
+  {
+    id: 12,
+    title: "Whispers of the Ancient Wood",
+    type: "TV Show",
+    genre: "Fantasy",
+    description: "A young sorceress discovers her destiny is tied to an enchanted forest and its mythical guardians.",
+    year: 2022,
+    imageKey: "photo-1506744038136-46273834b3fb", // body of water surrounded by trees
+  },
+  {
+    id: 13,
+    title: "Love in the Time of Pixels",
+    type: "Movie",
+    genre: "Romance",
+    description: "Two gamers find love through a virtual reality world, but struggle to connect in real life.",
+    year: 2023,
+    imageKey: "photo-1649972904349-6e44c42644a7", // woman on bed with laptop
+  },
+  {
+    id: 14,
+    title: "Culinary Chaos",
+    type: "TV Show",
+    genre: "Comedy",
+    description: "A disastrously untalented chef inherits a high-end restaurant and must learn to cook with hilarious results.",
+    year: 2024,
+    imageKey: "photo-1488590528505-98d2b5aba04b", // (re-using) laptop, could be recipe research
+  },
+  {
+    id: 15,
+    title: "The Haunting of Hill House Reimagined",
+    type: "TV Show",
+    genre: "Horror",
+    description: "A modern take on the classic tale, following a fractured family confronting the terrifying secrets of their ancestral home.",
+    year: 2023,
+    imageKey: "photo-1721322800607-8c38375eef04", // (re-using) living room, could be eerie
+  },
+  {
+    id: 16,
+    title: "Planet Explorers Jr.",
+    type: "TV Show",
+    genre: "Animation",
+    description: "A group of curious kids travels the galaxy in their spaceship, learning about different planets and aliens.",
+    year: 2024,
+    imageKey: "photo-1487058792275-0ad4aaf24ca7", // (re-using) colorful code, abstract for animation
+  },
 ];
 
 export const genres = [
   "Action",
+  "Animation",
   "Comedy",
   "Drama",
   "Fantasy",
@@ -93,8 +166,8 @@ export const genres = [
   "Mystery",
   "Romance",
   "Sci-Fi",
-  "Thriller",
   "Slice of Life",
-  "Animation",
+  "Thriller",
 ];
 export const types = ["Movie", "TV Show"];
+
